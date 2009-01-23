@@ -1,1 +1,9 @@
-<h2>You're on stage with <strong>Sinatra</strong>!</h2>
+<h2>Add a note</h2>
+<div id="new-note-form">
+    <form action="/notes" method="post">
+        <%= text_field "title" %>
+        <%= text_area "body" %>
+        <%= text_field "tags" %>
+        <%= submit "Submit" %>
+    </form>
+</div>
