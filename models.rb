@@ -4,12 +4,14 @@ class Section < BasicModel
   
   def default_attributes
     return {
-      :tags => []
+      "tags" => []
     }
   end
   
   def on_update
-    self.tags = self.tags.split(' ')
+    if (tags = @attributes['tags']) && tags.is_a?(String)
+      @attributes['tags'] = tags.split(' ')
+    end
   end
   
 end

@@ -12,16 +12,14 @@ get '/' do
 end
 
 get '/notes' do
-  @notes = Section.view(DB, 'by_title/all')
+  @notes = Section.view(DB, 'sections/by_title')
   erb :notes
-  # @obj = @notes.rows
-  # erb :debug
 end
 
 post '/notes' do
   @note = Section.new(DB, request.params)
   @note.save
-  redirect '/'
+  redirect '/notes'
 end
 
 get '/notes/:id' do
@@ -30,13 +28,13 @@ get '/notes/:id' do
 end
 
 post '/notes/:id' do
-  @note = DB.get(params[:id])
-  @note.update(request.params)
+  @note = Section.find(DB, params[:id])
+  @note.save(request.params)
   redirect "/notes/#{params[:id]}"
 end
 
 get '/notes/:id/edit' do
-  @note = DB.get(params[:id])
+  @note = Section.find(DB, params[:id])
   erb :edit
 end
 
