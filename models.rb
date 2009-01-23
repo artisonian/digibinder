@@ -1,30 +1,15 @@
-class Section
-  attr_accessor :attributes, :db
+require 'basic_model'
+
+class Section < BasicModel
   
-  def initialize(database, extra_attributes={})
-    @db = database
-    @attributes = {:type => 'section'}
-    @attributes.merge!(extra_attributes)
-  end
-  
-  def save
-    on_update
-    
-    response = @db.save(@attributes)
-    doc = @db.get(response['id'])
-  end
-  
-  def update(attributes)
-    @attributes.merge!(attributes)
-    on_update
-    
-    response = @db.save(@attributes)
-    doc = @db.get(response['id'])    
+  def default_attributes
+    attributes = {
+      :tags => []
+    }
   end
   
   def on_update
-    @attributes['tags'] = @attributes['tags'].split(' ')
-    @attributes['updated_at'] = Time.now
+    self.tags = self.tags.split(' ')
   end
   
 end

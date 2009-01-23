@@ -3,6 +3,10 @@ require 'sinatra'
 require 'couchrest'
 require 'models'
 
+configure :production do
+  set :syncviews, true
+end
+
 DB = CouchRest.database!("http://127.0.0.1:5984/digibinder-app")
 
 layout 'layout'
