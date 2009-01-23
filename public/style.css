@@ -1,5 +1,5 @@
-#header { position: relative; }
-#page-nav { position: absolute; top: 0; right: 0; }
+#header { position: relative; margin-bottom: 1.45em; border-bottom: 1px dotted #333; }
+#page-nav { position: absolute; top: -0.5em; right: 0; }
 #page-nav ul { list-style: none; }
 #page-nav ul li { display: inline; }
 #page-nav ul li a {
