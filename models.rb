@@ -16,6 +16,7 @@ class Section
   
   def on_update
     @attributes['tags'] = @attributes['tags'].split(' ')
+    @attributes['updated_at'] = Time.now
   end
   
 end

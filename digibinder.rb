@@ -11,6 +11,18 @@ get '/' do
   erb :index
 end
 
+get '/notes' do
+  @notes = DB.view('by_title/all')['rows']
+  erb :notes
+  # @obj = @notes[0]
+  # erb :debug
+end
+
+get '/notes/:id' do
+  @note = DB.get(params[:id])
+  erb :show
+end
+
 post '/notes' do
   @note = Section.new(DB, request.params)
   @note.save
@@ -18,6 +30,13 @@ post '/notes' do
 end
 
 helpers do
+  
+  # link helpers
+  
+  def link_to(text, path=nil)
+    href = path || text
+    %(<a href="#{href}" title="#{text}">#{text}</a>)
+  end
   
   # form helpers
   

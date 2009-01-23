@@ -1,0 +1,7 @@
+<h2>All notes</h2>
+<ul class="note-list">
+<% for note in @notes %>
+    <li><%= link_to note['value']['title'], "/notes/#{note['value']['_id']}" %></li>
+<% end %>
+</ul>
+<p><%= link_to 'Back to home', '/' %></p>
