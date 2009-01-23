@@ -3,11 +3,7 @@ require 'sinatra'
 require 'couchrest'
 require 'models'
 
-configure :production do
-  set :syncviews, true
-end
-
-DB = CouchRest.database!("http://127.0.0.1:5984/digibinder-app")
+DB = 'digibinder-app'
 
 layout 'layout'
 
@@ -16,9 +12,9 @@ get '/' do
 end
 
 get '/notes' do
-  @notes = DB.view('by_title/all')['rows']
+  @notes = Section.view(DB, 'by_title/all')
   erb :notes
-  # @obj = @notes[0]
+  # @obj = @notes.rows
   # erb :debug
 end
 
@@ -29,7 +25,7 @@ post '/notes' do
 end
 
 get '/notes/:id' do
-  @note = DB.get(params[:id])
+  @note = Section.find(DB, params[:id])
   erb :show
 end
 

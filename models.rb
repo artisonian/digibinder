@@ -3,7 +3,7 @@ require 'basic_model/lib/basic_model'
 class Section < BasicModel
   
   def default_attributes
-    attributes = {
+    return {
       :tags => []
     }
   end
