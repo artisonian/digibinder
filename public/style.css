@@ -1,0 +1,10 @@
+#header { position: relative; }
+#page-nav { position: absolute; top: 0; right: 0; }
+#page-nav ul { list-style: none; }
+#page-nav ul li { display: inline; }
+#page-nav ul li a {
+    display: block;
+    float: left;
+    padding: 0 0.5em;
+    margin-right: 0.5em;
+}

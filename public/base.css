@@ -1,0 +1,42 @@
+/* 
+Base.css by Natalie Jost http://personatalie.us
+
+The following styles are the default styles the most web sites I design starts with. 
+This goes just one step further than Eric's Reset.CSS, allowing me a head start on most projects.
+*/
+
+strong,b { font-weight:bold; }
+em,i { font-style:italic; }
+body { color: #555; font-size: 67.5%; font-family: "lucida grande", "lucida sans", "lucida sans unicode", lucida, sans-serif; text-align:center; }
+#wrap { font-size: 1.1em; text-align:left; }
+h1, h2, h3, h4, h5, h6,
+p, ol, ul, dl, table, blockquote { margin: 1em 25px; line-height: 1.5; }
+h1, h2, h3, h4, h5, h6 { font-family: georgia, serif; font-weight:normal; text-transform: capitalize; }
+h1 { font-size: 1.7em; }
+h2 { font-size: 1.55em; }
+h3 { font-size: 1.4em; font-weight:bold; }
+h4 { font-size: 1.25em; text-transform:uppercase; }
+h5 { font-size: 1.1em; font-weight:bold; }
+h6 { font-size: 1em; text-transform:uppercase; font-weight:bold; }
+a { color: #2A72B5; }
+a:visited, a:active { color: #000; }
+a:hover { text-decoration:none; }
+input, textarea {
+	border: 1px solid #ddd;
+	padding: 0.3em;
+}
+textarea {
+	width: 97%;
+}
+
+
+/* nathan's clear 
+http://sonspring.com/journal/clearing-floats */
+.clear
+{
+     clear: both;
+     display: block;
+     overflow: hidden;
+     width: 0;
+     height: 0;
+}
