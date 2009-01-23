@@ -1,0 +1,3 @@
+[submodule "basic_model"]
+	path = basic_model
+	url = git@github.com:artisonian/basic_model.git
