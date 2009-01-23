@@ -38,6 +38,11 @@ get '/notes/:id/edit' do
   erb :edit
 end
 
+get '/tags' do
+  @tags = Section.view(DB, 'tags/total', :group => true)
+  erb :tags
+end
+
 helpers do
   
   # link helpers

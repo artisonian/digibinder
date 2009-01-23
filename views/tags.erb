@@ -1,0 +1,6 @@
+<h2>All Tags</h2>
+<ul>
+<% for tag_group in @tags.rows %>
+    <li><%= tag_group.tag %> (<%= tag_group.total %>)</li>
+<% end %>
+</ul>
