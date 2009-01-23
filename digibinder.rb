@@ -18,15 +18,26 @@ get '/notes' do
   # erb :debug
 end
 
+post '/notes' do
+  @note = Section.new(DB, request.params)
+  @note.save
+  redirect '/'
+end
+
 get '/notes/:id' do
   @note = DB.get(params[:id])
   erb :show
 end
 
-post '/notes' do
-  @note = Section.new(DB, request.params)
-  @note.save
-  redirect '/'
+post '/notes/:id' do
+  @note = DB.get(params[:id])
+  @note.update(request.params)
+  redirect "/notes/#{params[:id]}"
+end
+
+get '/notes/:id/edit' do
+  @note = DB.get(params[:id])
+  erb :edit
 end
 
 helpers do
@@ -55,6 +66,12 @@ helpers do
         <label for="#{name}">#{name.capitalize}:</label><br />
         <textarea name="#{name}">#{value}</textarea>
     </p>
+    )
+  end
+  
+  def hidden_field(name, value)
+    %(
+    <input type="hidden" name="#{name}" value="#{value}" />
     )
   end
   

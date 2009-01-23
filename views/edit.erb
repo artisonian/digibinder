@@ -1,0 +1,10 @@
+<h2>Editing Note: "<%= @note['title'] %>"</h2>
+<div id="edit-note-form">
+    <form action="/notes/<%= @note["_id"] %>" method="post">
+        <%= text_field "title", @note['title'] %>
+        <%= text_area "body", @note['body'] %>
+        <%= text_field "tags", @note['tags'].join(' ') %>
+        <%= hidden_field "_rev", @note['_rev'] %>
+        <%= submit "Submit" %>
+    </form>
+</div>

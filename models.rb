@@ -14,6 +14,14 @@ class Section
     doc = @db.get(response['id'])
   end
   
+  def update(attributes)
+    @attributes.merge!(attributes)
+    on_update
+    
+    response = @db.save(@attributes)
+    doc = @db.get(response['id'])    
+  end
+  
   def on_update
     @attributes['tags'] = @attributes['tags'].split(' ')
     @attributes['updated_at'] = Time.now
