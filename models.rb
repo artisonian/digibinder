@@ -1,4 +1,4 @@
-require 'basic_model'
+require 'basic_model/lib/basic_model'
 
 class Section < BasicModel
   
