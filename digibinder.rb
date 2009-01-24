@@ -36,6 +36,7 @@ end
 
 get '/sections/:id/edit' do
   @section = Section.find(DB, params[:id])
+  @notebooks = Notebook.view(DB, 'notebooks/by_topic').rows
   erb :section_edit
 end
 

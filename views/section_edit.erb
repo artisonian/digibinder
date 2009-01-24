@@ -1,7 +1,15 @@
 <h2>Editing Section: "<%= @section.title %>"</h2>
 <div id="edit-section-form">
-    <form action="/section/<%= @section.id %>" method="post">
+    <form action="/sections/<%= @section.id %>" method="post">
         <%= text_field "title", @section.title %>
+        <p><label for="notebook">Notebook:</label><br />
+            <select name="notebook">
+                <option>---</option>
+                <% for notebook in @notebooks %>
+                <option value="<%= notebook.topic %>"<% if (@section.notebook == notebook.topic) %> selected<% end %>><%= notebook.topic %></option>
+                <% end %>
+            </select>
+        </p>
         <%= text_area "body", @section.body %>
         <%= text_field "tags", @section.tags.join(' ') %>
         <%= hidden_field "_rev", @section._rev %>
