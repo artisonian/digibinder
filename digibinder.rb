@@ -11,30 +11,30 @@ get '/' do
   erb :index
 end
 
-get '/notes' do
-  @notes = Section.view(DB, 'sections/by_title')
-  erb :notes
+get '/sections' do
+  @sections = Section.view(DB, 'sections/by_title')
+  erb :sections
 end
 
-post '/notes' do
-  @note = Section.new(DB, request.params)
-  @note.save
-  redirect '/notes'
+post '/sections' do
+  @section = Section.new(DB, request.params)
+  @section.save
+  redirect '/section'
 end
 
-get '/notes/:id' do
-  @note = Section.find(DB, params[:id])
+get '/sections/:id' do
+  @section = Section.find(DB, params[:id])
   erb :show
 end
 
-post '/notes/:id' do
-  @note = Section.find(DB, params[:id])
-  @note.save(request.params)
-  redirect "/notes/#{params[:id]}"
+post '/sections/:id' do
+  @section = Section.find(DB, params[:id])
+  @section.save(request.params)
+  redirect "/section/#{params[:id]}"
 end
 
-get '/notes/:id/edit' do
-  @note = Section.find(DB, params[:id])
+get '/sections/:id/edit' do
+  @section = Section.find(DB, params[:id])
   erb :edit
 end
 

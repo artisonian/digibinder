@@ -1,7 +1,7 @@
-<h2><%= @note.title %></h2>
-<p><%= @note.body %></p>
+<h2><%= @section.title %></h2>
+<p><%= @section.body %></p>
 <p>
-    <small><strong>Tags:</strong> <%= @note.tags.join(', ') %></small><br />
-    <small><strong>Modified:</strong> <%= @note.updated_at %></small>
+    <small><strong>Tags:</strong> <%= @section.tags.join(', ') %></small><br />
+    <small><strong>Modified:</strong> <%= @section.updated_at %></small>
 </p>
-<p><%= link_to 'All notes', '/notes' %></p>
+<p><%= link_to 'All sections', '/sections' %></p>

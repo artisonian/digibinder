@@ -1,0 +1,8 @@
+<h2>All sections</h2>
+<ul class="section-list">
+<% for note in @sections.rows %>
+    <li><%= link_to note.title, "/sections/#{note.id}" %> |
+    <%= link_to 'edit', "/sections/#{note.id}/edit" %></li>
+<% end %>
+</ul>
+<p><%= link_to 'Back to home', '/' %></p>

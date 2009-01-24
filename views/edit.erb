@@ -1,10 +1,10 @@
-<h2>Editing Note: "<%= @note.title %>"</h2>
-<div id="edit-note-form">
-    <form action="/notes/<%= @note.id %>" method="post">
-        <%= text_field "title", @note.title %>
-        <%= text_area "body", @note.body %>
-        <%= text_field "tags", @note.tags.join(' ') %>
-        <%= hidden_field "_rev", @note._rev %>
+<h2>Editing Section: "<%= @section.title %>"</h2>
+<div id="edit-section-form">
+    <form action="/section/<%= @section.id %>" method="post">
+        <%= text_field "title", @section.title %>
+        <%= text_area "body", @section.body %>
+        <%= text_field "tags", @section.tags.join(' ') %>
+        <%= hidden_field "_rev", @section._rev %>
         <%= submit "Submit" %>
     </form>
 </div>

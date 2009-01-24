@@ -1,10 +1,10 @@
-<h2>Add a note</h2>
-<div id="new-note-form">
-    <form action="/notes" method="post">
+<h2>Add a section</h2>
+<div id="new-section-form">
+    <form action="/sections" method="post">
         <%= text_field "title" %>
         <%= text_area "body" %>
         <%= text_field "tags" %>
         <%= submit "Submit" %>
     </form>
 </div>
-<p><%= link_to 'View all notes', '/notes' %></p>
+<p><%= link_to 'View all sections', '/sections' %></p>

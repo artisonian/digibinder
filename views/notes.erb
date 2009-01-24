@@ -1,8 +1,0 @@
-<h2>All notes</h2>
-<ul class="note-list">
-<% for note in @notes.rows %>
-    <li><%= link_to note.title, "/notes/#{note.id}" %> |
-    <%= link_to 'edit', "/notes/#{note.id}/edit" %></li>
-<% end %>
-</ul>
-<p><%= link_to 'Back to home', '/' %></p>
