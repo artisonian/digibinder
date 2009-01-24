@@ -1,5 +1,24 @@
 <h2><%= @notebook.topic %></h2>
 <p><small><strong>Modified: </strong><%= @notebook.updated_at %></small></p>
+
+<% for section in @sections %>
+    <div class="notebook-section">
+        <h3><%= section.title %></h3>
+        <p><%= section.body %></p>
+        <p><small><strong>Tags:</strong> <%= section.tags.join(', ') %></small></p>
+    </div>
+<% end %>
+
+<h2>Add a section</h2>
+<div id="new-section-form">
+    <form action="/sections" method="post">
+        <%= text_field "title" %>
+        <%= text_area "body" %>
+        <%= text_field "tags" %>
+        <%= hidden_field "notebook", @notebook.topic %>
+        <%= submit "Submit" %>
+    </form>
+</div>
 <p><%= link_to 'Home', '/' %></p>
 
 <%# Add a form for a new section here. Give the form a hidden field for notebook.topic %>

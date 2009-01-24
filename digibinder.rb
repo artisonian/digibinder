@@ -56,6 +56,7 @@ end
 
 get '/notebooks/:id' do
   @notebook = Notebook.find(DB, params[:id])
+  @sections = Section.view(DB, 'sections/by_notebook', :key => @notebook.topic).rows
   erb :notebook_show
 end
 
