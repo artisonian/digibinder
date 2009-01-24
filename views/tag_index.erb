@@ -1,6 +1,7 @@
 <h2>All Tags</h2>
 <ul>
 <% for tag_group in @tags %>
-    <li><%= tag_group.tag %> (<%= tag_group.total %>)</li>
+    <li><%= link_to tag_group.tag, "/tags/#{tag_group.tag}" %> (<%= tag_group.total %>)</li>
 <% end %>
 </ul>
+<p><%= link_to '&larr; Back to home', '/' %></p>

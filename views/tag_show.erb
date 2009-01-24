@@ -1,0 +1,7 @@
+<h2>Sections tagged: "<%= @tag %>"</h2>
+<ul>
+<% for section in @sections %>
+    <li><%= link_to section.title, "/sections/#{section.id}" %></li>
+<% end %>
+</ul>
+<p><%= link_to '&larr; All tags', '/tags' %></p>

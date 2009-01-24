@@ -45,6 +45,12 @@ get '/tags' do
   erb :tag_index
 end
 
+get '/tags/:name' do
+  @tag = params[:name]
+  @sections = Section.view(DB, 'sections/by_tag', :key => @tag).rows
+  erb :tag_show
+end
+
 post '/notebooks' do
   @notebook = Notebook.new(DB, request.params)
   @notebook.save
