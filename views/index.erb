@@ -1,12 +1,3 @@
-<h2>Add a section</h2>
-<div id="new-section-form">
-    <form action="/sections" method="post">
-        <%= text_field "title" %>
-        <%= text_area "body" %>
-        <%= text_field "tags" %>
-        <%= submit "Submit" %>
-    </form>
-</div>
 <h2>All Notebooks</h2>
 <ul id="notebook-listing">
     <% for notebook in @notebooks %>
