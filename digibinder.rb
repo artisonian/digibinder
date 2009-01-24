@@ -19,7 +19,7 @@ end
 post '/sections' do
   @section = Section.new(DB, request.params)
   @section.save
-  redirect '/section'
+  redirect '/sections'
 end
 
 get '/sections/:id' do
@@ -30,7 +30,7 @@ end
 post '/sections/:id' do
   @section = Section.find(DB, params[:id])
   @section.save(request.params)
-  redirect "/section/#{params[:id]}"
+  redirect "/sections/#{params[:id]}"
 end
 
 get '/sections/:id/edit' do
