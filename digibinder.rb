@@ -50,6 +50,10 @@ post '/notebooks' do
   redirect '/'
 end
 
+get '/notebooks/new' do
+  erb :notebook_new
+end
+
 get '/notebooks/:id' do
   @notebook = Notebook.find(DB, params[:id])
   erb :notebook_show

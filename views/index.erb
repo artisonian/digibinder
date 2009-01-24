@@ -7,10 +7,11 @@
         <%= submit "Submit" %>
     </form>
 </div>
+<h2>All Notebooks</h2>
 <ul id="notebook-listing">
     <% for notebook in @notebooks %>
         <li><%= link_to notebook.topic, "/notebooks/#{notebook.id}" %> |
             <%= link_to 'edit', "/notebooks/#{notebook.id}/edit" %></li>
     <% end %>
 </ul>
-<p><%= link_to 'View all sections', '/sections' %></p>
+<p><%= link_to 'Add a notebook', '/notebooks/new' %></p>
