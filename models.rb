@@ -15,3 +15,6 @@ class Section < BasicModel
   end
   
 end
+
+class Notebook < BasicModel    
+end

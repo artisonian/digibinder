@@ -8,12 +8,13 @@ DB = 'digibinder-app'
 layout 'layout'
 
 get '/' do
+  @notebooks = Notebook.view(DB, 'notebooks/by_topic').rows
   erb :index
 end
 
 get '/sections' do
-  @sections = Section.view(DB, 'sections/by_title')
-  erb :sections
+  @sections = Section.view(DB, 'sections/by_title').rows
+  erb :section_index
 end
 
 post '/sections' do
@@ -24,7 +25,7 @@ end
 
 get '/sections/:id' do
   @section = Section.find(DB, params[:id])
-  erb :show
+  erb :section_show
 end
 
 post '/sections/:id' do
@@ -35,12 +36,34 @@ end
 
 get '/sections/:id/edit' do
   @section = Section.find(DB, params[:id])
-  erb :edit
+  erb :section_edit
 end
 
 get '/tags' do
-  @tags = Section.view(DB, 'tags/total', :group => true)
-  erb :tags
+  @tags = Section.view(DB, 'tags/total', :group => true).rows
+  erb :tag_index
+end
+
+post '/notebooks' do
+  @notebook = Notebook.new(DB, request.params)
+  @notebook.save
+  redirect '/'
+end
+
+get '/notebooks/:id' do
+  @notebook = Notebook.find(DB, params[:id])
+  erb :notebook_show
+end
+
+post '/notebooks/:id' do
+  @notebook = Notebook.find(DB, params[:id])
+  @notebook.save(request.params)
+  redirect "/notebooks/#{params[:id]}"
+end
+
+get '/notebooks/:id/edit' do
+  @notebook = Notebook.find(DB, params[:id])
+  erb :notebook_edit
 end
 
 helpers do

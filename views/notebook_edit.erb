@@ -1,0 +1,10 @@
+<h2>Editing Notebook: "<%= @notebook.topic %>"</h2>
+<div id="edit-notebook-form">
+    <form action="/notebooks/<%= @notebook.id %>" method="post">
+        <%= text_field "topic", @notebook.topic %>
+        <%= hidden_field "_rev", @notebook._rev %>
+        <%= submit "Submit" %>
+    </form>
+</div>
+
+<%# Is it necessary to make sure the topics are unique? %>
