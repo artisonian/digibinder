@@ -5,6 +5,7 @@ require 'models'
 
 configure do
   use Rack::CommonLogger
+  enable :sessions
 end
 
 layout 'layout'
@@ -40,6 +41,12 @@ get '/sections/:id/edit' do
   @section = Section.find(options.db, params[:id])
   @notebooks = Notebook.view(options.db, 'notebooks/by_topic').rows
   erb :section_edit
+end
+
+get '/sections/:id/delete' do
+  @section = Section.find(options.db, params[:id])
+  @section.destroy
+  redirect '/sections'
 end
 
 get '/tags' do
