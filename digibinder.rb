@@ -3,56 +3,58 @@ require 'sinatra'
 require 'couchrest'
 require 'models'
 
-DB = 'digibinder-app'
+configure do
+  use Rack::CommonLogger
+end
 
 layout 'layout'
 
 get '/' do
-  @notebooks = Notebook.view(DB, 'notebooks/by_topic').rows
+  @notebooks = Notebook.view(options.db, 'notebooks/by_topic').rows
   erb :index
 end
 
 get '/sections' do
-  @sections = Section.view(DB, 'sections/by_title').rows
+  @sections = Section.view(options.db, 'sections/by_title').rows
   erb :section_index
 end
 
 post '/sections' do
-  @section = Section.new(DB, request.params)
+  @section = Section.new(options.db, request.params)
   @section.save
   redirect '/sections'
 end
 
 get '/sections/:id' do
-  @section = Section.find(DB, params[:id])
+  @section = Section.find(options.db, params[:id])
   erb :section_show
 end
 
 post '/sections/:id' do
-  @section = Section.find(DB, params[:id])
+  @section = Section.find(options.db, params[:id])
   @section.save(request.params)
   redirect "/sections/#{params[:id]}"
 end
 
 get '/sections/:id/edit' do
-  @section = Section.find(DB, params[:id])
-  @notebooks = Notebook.view(DB, 'notebooks/by_topic').rows
+  @section = Section.find(options.db, params[:id])
+  @notebooks = Notebook.view(options.db, 'notebooks/by_topic').rows
   erb :section_edit
 end
 
 get '/tags' do
-  @tags = Section.view(DB, 'tags/total', :group => true).rows
+  @tags = Section.view(options.db, 'tags/total', :group => true).rows
   erb :tag_index
 end
 
 get '/tags/:name' do
   @tag = params[:name]
-  @sections = Section.view(DB, 'sections/by_tag', :key => @tag).rows
+  @sections = Section.view(options.db, 'sections/by_tag', :key => @tag).rows
   erb :tag_show
 end
 
 post '/notebooks' do
-  @notebook = Notebook.new(DB, request.params)
+  @notebook = Notebook.new(options.db, request.params)
   @notebook.save
   redirect '/'
 end
@@ -62,19 +64,19 @@ get '/notebooks/new' do
 end
 
 get '/notebooks/:id' do
-  @notebook = Notebook.find(DB, params[:id])
-  @sections = Section.view(DB, 'sections/by_notebook', :key => @notebook.topic).rows
+  @notebook = Notebook.find(options.db, params[:id])
+  @sections = Section.view(options.db, 'sections/by_notebook', :key => @notebook.topic).rows
   erb :notebook_show
 end
 
 post '/notebooks/:id' do
-  @notebook = Notebook.find(DB, params[:id])
+  @notebook = Notebook.find(options.db, params[:id])
   @notebook.save(request.params)
   redirect "/notebooks/#{params[:id]}"
 end
 
 get '/notebooks/:id/edit' do
-  @notebook = Notebook.find(DB, params[:id])
+  @notebook = Notebook.find(options.db, params[:id])
   erb :notebook_edit
 end
 
